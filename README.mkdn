@@ -1,0 +1,35 @@
+SuperTeam
+===========
+
+Getting Started
+---------------
+
+To get started with Android/SuperTeam, you'll need to get
+familiar with [Git and Repo](http://source.android.com/download/using-repo).
+
+To initialize your local repository using the SuperJB trees, use a command like this:
+
+    repo init -u git://github.com/SuperJB/android.git -b jellybean
+
+Then run this to download the sources:
+
+    repo sync -j8 -c
+
+Load build environment:
+
+    . build/envsetup.sh
+
+Select the device to build:
+
+    lunch
+    [select the device number you want to compile]
+
+or if you know the device identifier, you can directly (you can found it on vendorsetup.sh file):
+
+    lunch [device_id]
+
+NOTE: If dependencies are needed, they will be automatically added to your local_manifest.xml and downloaded.
+
+Then build the rom with:
+
+    mka bacon

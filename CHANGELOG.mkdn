@@ -1,0 +1,4 @@
+SuperTeam
+===============
+
+Visit http://github.com/SuperTeam for full changelogs and git access.
