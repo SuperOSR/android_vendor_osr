@@ -192,9 +192,6 @@ OSR_VERSION := $(shell date -u +%y%m.%d)
 
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.osr.version=$(PRODUCT_ROM_FILE) \
-  ro.modversion=$(PRODUCT_ROM_FILE) \
-  ro.cm.version=$(CM_VERSION) \
-  ro.modversion=$(CM_VERSION)
-
+  ro.modversion=$(PRODUCT_ROM_FILE)
 
 -include $(WORKSPACE)/hudson/image-auto-bits.mk

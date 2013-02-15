@@ -5,9 +5,9 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/osr/overlay/common_tablets
 
 # Default ringtone
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.ringtone=CyanTone.ogg \
-    ro.config.notification_sound=CyanMessage.ogg \
-    ro.config.alarm_alert=CyanAlarm.ogg
+    ro.config.ringtone=Gigolo.ogg \
+    ro.config.notification_sound=Rang.ogg \
+    ro.config.alarm_alert=Fermium.ogg
 
 # BT config
 PRODUCT_COPY_FILES += \
