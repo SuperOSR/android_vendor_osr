@@ -158,6 +158,9 @@ PRODUCT_PACKAGES += \
     CMFileManager \
     LockClock
 
+PRODUCT_PACKAGES += \
+    CellBroadcastReceiver
+
 # Extra tools in OSR
 PRODUCT_PACKAGES += \
     openvpn \
