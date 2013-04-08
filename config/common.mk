@@ -127,7 +127,6 @@ include vendor/osr/config/themes_common.mk
 # Required OSR packages
 PRODUCT_PACKAGES += \
     Camera \
-    ContactsWidgets \
     Development \
     FileExplorer \
     LatinIME \
@@ -152,9 +151,7 @@ PRODUCT_PACKAGES += \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf \
-    CMWallpapers \
     Apollo \
-    CMUpdater \
     CMFileManager \
     LockClock
 
