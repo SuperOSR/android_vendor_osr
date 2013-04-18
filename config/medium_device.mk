@@ -107,7 +107,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     VideoEditor \
     VoiceDialer \
-    SoundRecorder \
     Basic
 
 # Custom C packages
