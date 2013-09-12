@@ -59,6 +59,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.android.dateformat=MM-dd-yyyy \
     ro.com.android.dataroaming=false
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.build.selinux=1 \
+    persist.sys.root_access=1
+
 ifneq ($(TARGET_BUILD_VARIANT),eng)
 # Enable ADB authentication
 ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=1
@@ -84,6 +88,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/osr/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
 
+# SELinux filesystem labels
+PRODUCT_COPY_FILES += \
+    vendor/cm/prebuilt/common/etc/init.d/50selinuxrelabel:system/etc/init.d/50selinuxrelabel
+
 # CM-specific init file
 PRODUCT_COPY_FILES += \
     vendor/osr/prebuilt/common/etc/init.local.rc:root/init.cm.rc
@@ -97,9 +105,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES +=  \
     vendor/osr/proprietary/Term.apk:system/app/Term.apk \
     vendor/osr/proprietary/lib/armeabi/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
-
-#    vendor/osr/prebuilt/common/apps/SuperSU.apk:system/app/SuperSU.apk \
-#    vendor/osr/prebuilt/common/xbin/su:system/xbin/su
 
 # Bring in camera effects
 PRODUCT_COPY_FILES +=  \
@@ -140,7 +145,7 @@ PRODUCT_PACKAGES += \
 
 # Optional OSR packages
 PRODUCT_PACKAGES += \
-    VideoEditor \
+    VoicePlus \
     VoiceDialer \
     Basic
 
@@ -152,7 +157,13 @@ PRODUCT_PACKAGES += \
     audio_effects.conf \
     Apollo \
     CMFileManager \
-    LockClock
+    LockClock \
+    CMAccount
+
+# CM Hardware Abstraction Framework
+PRODUCT_PACKAGES += \
+    org.cyanogenmod.hardware \
+    org.cyanogenmod.hardware.xml
 
 PRODUCT_PACKAGES += \
     CellBroadcastReceiver
@@ -168,7 +179,12 @@ PRODUCT_PACKAGES += \
     nano \
     htop \
     powertop \
-    lsof
+    lsof \
+    mount.exfat \
+    fsck.exfat \
+    mkfs.exfat \
+    ntfsfix \
+    ntfs-3g
 
 # Openssh
 PRODUCT_PACKAGES += \
@@ -200,4 +216,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
   ro.osr.version=$(PRODUCT_ROM_FILE) \
   ro.modversion=$(PRODUCT_ROM_FILE)
 
+-include vendor/osr/sepolicy/sepolicy.mk
 -include $(WORKSPACE)/hudson/image-auto-bits.mk

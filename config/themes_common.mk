@@ -2,8 +2,7 @@
 PRODUCT_PACKAGES += \
        ThemeManager \
        ThemeChooser \
-       com.tmobile.themes \
-       CMFileManagerThemes
+       com.tmobile.themes
 
 PRODUCT_COPY_FILES += \
        vendor/osr/config/permissions/com.tmobile.software.themes.xml:system/etc/permissions/com.tmobile.software.themes.xml
