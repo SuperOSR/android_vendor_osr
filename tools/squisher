@@ -17,6 +17,7 @@ msgInfo " "
 msgInfo "Trabajando para $ALIAS"
 msgInfo " "
 
+
 OUT_TARGET_HOST=`uname -a | grep Darwin`
 if [ -z "$OUT_TARGET_HOST" ]
 then
@@ -64,6 +65,19 @@ echo
 # Copiado de archivos comunes
     cp -rf $ANDROID_BUILD_TOP/$MODS/common/* $REPACKOTA/
 
+# Copiado de archivos especificos del dispositivo
+    if [ ! -f "$VENDOR/mods/terminales/$ALIAS" ]; then
+    	cp -rf $ANDROID_BUILD_TOP/$MODS/terminales/$ALIAS/. $REPACKOTA/
+	else
+msgWarn Sin personalización
+    fi
+
+# Ejecuta si existe personalizaciones específicas del dispositivo.
+    if [ -f $ANDROID_BUILD_TOP/$MODS/terminales/$ALIAS/personalizar.sh ]; then
+    	$ANDROID_BUILD_TOP/$MODS/terminales/$ALIAS/personalizar.sh $REPACKOTA
+    	rm $REPACKOTA/personalizar.sh
+    fi
+
 # Move all apks to the same directory so xargs can
 # use also with framework-res.apk. This allow process
 # framework-res.apk in parallel with other apks
@@ -90,20 +104,10 @@ $SED -i \
 	-e '/ro\.build\.type/s/eng/user/' \
 	$REPACK/ota/system/build.prop
 
-
 # Delete unnecessary binaries
 ( cd $REPACK/ota/system/bin; echo $DELETE_BINS | xargs rm -f; )
 
-# Copiado de archivos especificos del dispositivo
-    if [ -f $ANDROID_BUILD_TOP/$MODS/terminales/$ALIAS ]; then
-    	cp -r $ANDROID_BUILD_TOP/$MODS/terminales/$ALIAS/* $REPACKOTA/
-    fi
 
-# Ejecuta si existe personalizaciones específicas del dispositivo.
-    if [ -f $ANDROID_BUILD_TOP/$MODS/terminales/$ALIAS/personalizar.sh ]; then
-    	$ANDROID_BUILD_TOP/$MODS/terminales/$ALIAS/personalizar.sh $REPACKOTA
-    	rm $REPACKOTA/personalizar.sh
-    fi
 
 # No need for recovery
 rm -rf $REPACK/ota/recovery
