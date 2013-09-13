@@ -1,11 +1,11 @@
 # Inherit common OSR stuff
 $(call inherit-product, vendor/osr/config/common_full.mk)
 
-# Default ringtone
+# use AOSP default sounds
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.ringtone=Gigolo.ogg \
-    ro.config.notification_sound=Rang.ogg \
-    ro.config.alarm_alert=Fermium.ogg
+  ro.config.ringtone=Themos.ogg \
+  ro.config.notification_sound=Proxima.ogg \
+  ro.config.alarm_alert=Cesium.ogg
 
 PRODUCT_PACKAGES += \
   Mms
