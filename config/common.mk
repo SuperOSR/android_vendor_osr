@@ -131,14 +131,11 @@ include vendor/osr/config/themes_common.mk
 
 # Required OSR packages
 PRODUCT_PACKAGES += \
-    Camera \
+    Focal \
     Development \
     FileExplorer \
     LatinIME \
     Notes \
-    ROMControl \
-    SoundRecorder2 \
-    SpareParts \
     Wallpapers \
     Superuser \
     su
@@ -147,6 +144,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     VoicePlus \
     VoiceDialer \
+    SoundRecorder2 \
     Basic
 
 # Custom OSR packages
