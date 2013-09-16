@@ -11,5 +11,6 @@ fi
 # Devices supported
 add_lunch_combo osr_jfltexx-eng
 add_lunch_combo osr_mako-eng
+add_lunch_combo osr_u10z-eng
 
 
